@@ -1,0 +1,21 @@
+[project]
+name = "tracki"
+version = "1.0.0"
+description = "Jednoduchy nastroj pro stahovani MP3 z YouTube"
+requires-python = ">=3.11"
+dependencies = [
+    "yt-dlp>=2025.1.1",
+    "customtkinter>=5.2.2",
+    "mutagen>=1.47.0",
+]
+
+[project.optional-dependencies]
+build = ["pyinstaller>=6.10", "pefile>=2024.8.26"]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

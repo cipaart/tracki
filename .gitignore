@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Build
+dist/
+build/pyinstaller/
+build/ffmpeg/
+*.spec.bak
+
+# Nastaveni aplikace v prenosnem rezimu
+tracki.json
+tracki.json.tmp
