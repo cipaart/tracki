@@ -15,3 +15,6 @@ build/ffmpeg/
 # Nastaveni aplikace v prenosnem rezimu
 tracki.json
 tracki.json.tmp
+
+# Osobni poznamky
+co_dal.JPG
