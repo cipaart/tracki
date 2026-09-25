@@ -1,7 +1,13 @@
 name: build-windows
 
 # Sestavi portable Tracki.exe na Windows runneru a nahraje ho jako artefakt.
-# Pri tagu v* i pri publikovani Release se .exe navic prilozi k Release.
+# Pri tagu v* se .exe navic prilozi k Release.
+#
+# Pozn.: spoustec `release: published` tu zamerne NENI. Publikovani Release
+# pres web GitHubu tag vytvori, takze push udalost vznikne sama a build se
+# spusti. Kdyby tu byly oba spoustece, bezely by dva stejne buildy naraz
+# a kazdy by k Release nahraval svoji binarku - vyhral by ten, co dobehne
+# pozdeji, a vysledek by byl nahodny.
 
 on:
   push:
@@ -9,10 +15,6 @@ on:
     tags: ["v*"]
   pull_request:
   workflow_dispatch:
-  # Release zalozeny pres web GitHubu netvori push udalost, takze by se build
-  # nespustil a k Release by se nic neprilozilo. Tenhle spoustec to resi.
-  release:
-    types: [published]
 
 permissions:
   contents: read
@@ -122,8 +124,5 @@ jobs:
           files: |
             dist/Tracki.exe
             dist/Tracki.exe.sha256
-          body: |
-            Portable Tracki pro Windows 10/11 - jeden soubor, bez instalace.
-
-            Soubor neni digitalne podepsany, takze pri prvnim spusteni muze
-            Windows SmartScreen zobrazit varovani. Viz README.
+          # Zadny `body` zamerne: action by jim prepsala popis, ktery si
+          # k Release napsal clovek. Takhle jen prilozi soubory.
